@@ -65,7 +65,6 @@ return {
         "go",
         "gomod",
         "groovy",
-        "html_tags",
         "http",
         "java",
         "jq",
