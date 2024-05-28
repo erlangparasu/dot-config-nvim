@@ -49,6 +49,7 @@ return {
         "xml",
         "yaml",
         -- Custom
+        -- Ref: https://github.com/nvim-treesitter/nvim-treesitter/tree/master/queries
         "angular",
         "astro",
         "c_sharp",
