@@ -9,6 +9,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
+    { "mg979/vim-visual-multi" },
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
@@ -85,7 +86,7 @@ require("lazy").setup({
   },
 })
 
-require("flutter-tools").setup {} -- use defaults
+-- require("flutter-tools").setup {} -- use defaults
 
 -- local cmp = require("cmp")
 -- cmp.setup {
