@@ -9,8 +9,6 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { "akinsho/toggleterm.nvim", version = "*", config = true },
-    { "mg979/vim-visual-multi" },
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
