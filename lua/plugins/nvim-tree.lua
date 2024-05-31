@@ -14,6 +14,15 @@ return {
         },
         config = function()
             require('nvim-tree').setup({
+                view = {
+                    -- File explorer display position, left: left, right: right
+                    side = "left",
+                    -- Display line numbers
+                    number = false,
+                    relativenumber = false,
+                    signcolumn = "yes", -- Display icons
+                    width = 50,
+                },
                 diagnostics = {
                     enable = true,
                     show_on_dirs = true,

@@ -9,3 +9,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.b.autoformat = false
   end,
 })
+
+vim.api.nvim_create_autocmd({"BufNewFile", "BufReadPost"}, {
+  callback = function(args)
+    if vim.fn.expand "%:p" ~= "" then
+      vim.api.nvim_del_autocmd(args.id)
+      vim.cmd "noautocmd NvimTreeOpen"
+      vim.cmd "noautocmd wincmd p"
+    end
+  end,
+})
