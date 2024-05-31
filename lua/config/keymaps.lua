@@ -4,6 +4,7 @@
 
 local map = LazyVim.safe_keymap_set
 
+-- Reference: https://github.com/folke/persistence.nvim/blob/5fe077056c821aab41f87650bd6e1c48cd7dd047/README.md?plain=1#L54
 vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
 
 if vim.g.neovide then
