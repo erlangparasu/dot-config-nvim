@@ -4,6 +4,8 @@
 
 local map = LazyVim.safe_keymap_set
 
+vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+
 if vim.g.neovide then
     -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
     -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
