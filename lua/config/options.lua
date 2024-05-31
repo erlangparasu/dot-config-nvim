@@ -4,3 +4,5 @@
 
 -- vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 vim.opt.clipboard='unnamedplus'
+
+vim.o.guifont = "JetBrainsMono Nerd Font:h12" -- text below applies for VimScript
