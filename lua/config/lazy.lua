@@ -28,7 +28,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },
-    { import = "lazyvim.plugins.extras.editor.trouble-v3" },
+    -- { import = "lazyvim.plugins.extras.editor.trouble-v3" },
     --
     { import = "lazyvim.plugins.extras.linting.eslint" },
     --
