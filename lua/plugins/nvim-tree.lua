@@ -28,6 +28,14 @@ return {
                     show_on_dirs = true,
                     show_on_open_dirs = true,
                 },
+                update_focused_file = {
+                    enable = true,
+                    update_root = {
+                        enable = false,
+                        ignore_list = {},
+                    },
+                    exclude = false,
+                },
             })
         end,
     }
