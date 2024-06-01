@@ -5,19 +5,19 @@
 local map = LazyVim.safe_keymap_set
 
 -- Reference: https://github.com/folke/persistence.nvim/blob/5fe077056c821aab41f87650bd6e1c48cd7dd047/README.md?plain=1#L54
--- vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+-- map("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
 
 map("n", "<leader>fo", ":NvimTreeOpen<CR>", { noremap = true, desc = "Open File Tree" })
 
 if vim.g.neovide then
     -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
     -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
-    vim.api.nvim_set_keymap('v', '<sc-c>', '"+y', {noremap = true})
-	vim.api.nvim_set_keymap('n', '<sc-v>', 'l"+P', {noremap = true})
-	vim.api.nvim_set_keymap('v', '<sc-v>', '"+P', {noremap = true})
-	vim.api.nvim_set_keymap('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', {noremap = true})
-	vim.api.nvim_set_keymap('i', '<sc-v>', '<ESC>l"+Pli', {noremap = true})
-	vim.api.nvim_set_keymap('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
+    map('v', '<sc-c>', '"+y', {noremap = true})
+	map('n', '<sc-v>', 'l"+P', {noremap = true})
+	map('v', '<sc-v>', '"+P', {noremap = true})
+	map('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', {noremap = true})
+	map('i', '<sc-v>', '<ESC>l"+Pli', {noremap = true})
+	map('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
 end
 
 -- Resize window using <ctrl> arrow keys
