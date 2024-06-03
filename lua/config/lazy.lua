@@ -52,6 +52,14 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.gitui" },
     --
     { import = "lazyvim.plugins.extras.coding.luasnip" },
+    {
+      "rbong/vim-flog",
+      lazy = true,
+      cmd = { "Flog", "Flogsplit", "Floggit" },
+      dependencies = {
+        "tpope/vim-fugitive",
+      },
+    },
     -- NOTE: END Custom
     -- import/override with your plugins
     { import = "plugins" },
