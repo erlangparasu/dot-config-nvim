@@ -20,12 +20,6 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lang.json" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- NOTE: BEGIN Custom
-    {
-      "mireq/large_file",
-      config = function()
-        require("large_file").setup()
-      end
-    },
     { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.dot" },
     --
