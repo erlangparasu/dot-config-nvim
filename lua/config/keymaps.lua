@@ -13,11 +13,11 @@ if vim.g.neovide then
     -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
     -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
     map('v', '<sc-c>', '"+y', {noremap = true})
-	map('n', '<sc-v>', 'l"+P', {noremap = true})
-	map('v', '<sc-v>', '"+P', {noremap = true})
-	map('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', {noremap = true})
-	map('i', '<sc-v>', '<ESC>l"+Pli', {noremap = true})
-	map('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
+  map('n', '<sc-v>', 'l"+P', {noremap = true})
+  map('v', '<sc-v>', '"+P', {noremap = true})
+  map('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', {noremap = true})
+  map('i', '<sc-v>', '<ESC>l"+Pli', {noremap = true})
+  map('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
 end
 
 -- Resize window using <ctrl> arrow keys
@@ -25,13 +25,13 @@ end
 -- - https://github.com/LazyVim/LazyVim/blob/060f56d6d429c5ee3fd35f4fa0c152f4a42781ca/lua/lazyvim/config/keymaps.lua#L20
 -- - https://github.com/LunarVim/LunarVim/pull/725/files
 if vim.fn.has("mac") then
-	map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-	map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-	map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-	map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+  map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+  map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+  map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+  map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 end
 
 map('n', '<leader>ci', [[<cmd>lua require("luasnip.loaders.from_vscode").load({ paths = { "./.vscode" } })<cr>]], {
-	noremap = true,
-	desc = "Load snippets"
+  noremap = true,
+  desc = "Load snippets"
 })
