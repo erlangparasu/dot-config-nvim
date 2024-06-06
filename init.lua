@@ -5,12 +5,12 @@
 -- vim.logfile = '/Users/ganeshcom/.config/nvim/nvim.log'
 
 if vim.g.vscode then
-    -- require("config.lazy")
+  -- require("config.lazy")
 elseif vim.g.neovide then
-    -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
-    -- vim.g.neovide_cursor_vfx_mode = "wireframe"
+  -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  -- vim.g.neovide_cursor_vfx_mode = "wireframe"
 
-    require("config.lazy")
+  require("config.lazy")
 else
-    require("config.lazy")
+  require("config.lazy")
 end
