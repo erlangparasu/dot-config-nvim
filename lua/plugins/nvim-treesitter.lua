@@ -102,6 +102,16 @@ return {
           goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
         },
       },
+      -- disable = function(lang, buf)
+      --   local max_filesize = 900 * 1024 -- 900 KB
+      --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      --   if ok and stats and stats.size > max_filesize then
+      --     return true
+      --   end
+      -- end,
+      disable = function(lang, bufnr)
+        return api.nvim_buf_line_count(bufnr) > 5000
+      end,
     },
     ---@param opts TSConfig
     config = function(_, opts)
