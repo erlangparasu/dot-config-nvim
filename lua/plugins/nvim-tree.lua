@@ -1,10 +1,10 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        version = "*",
-        lazy = false,
-        build = ':TSUpdate'
-    },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     version = "*",
+    --     lazy = false,
+    --     build = ':TSUpdate'
+    -- },
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",
