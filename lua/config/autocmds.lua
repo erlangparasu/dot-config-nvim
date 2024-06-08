@@ -83,3 +83,31 @@ end
 
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = load_snippets_from_workdir })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sql",
+  callback = function()
+    -- Disable syntax highlighting for large files
+    vim.cmd[[
+      autocmd BufEnter *.sql set syntax=off
+    ]]
+
+    -- Disable folding for SQL files
+    vim.cmd[[
+      autocmd BufEnter *.sql set nofoldenable
+    ]]
+
+    -- Increase swap file size
+    vim.opt.swapfile = false
+    -- vim.opt.directory = '/tmp//,.'
+    -- vim.opt.updatecount = 100
+    -- vim.opt.undolevels = 0
+
+    -- Disable undo history for SQL files
+    vim.cmd[[
+      autocmd BufEnter *.sql set noundofile
+    ]]
+
+    vim.treesitter.highlighter.active = false
+  end,
+})
