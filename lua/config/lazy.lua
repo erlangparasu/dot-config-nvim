@@ -12,19 +12,14 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    -- NOTE: BEGIN Custom
-    -- { import = "lazyvim.plugins.extras.util.project" },
-    { import = "lazyvim.plugins.extras.util.dot" },
-    --
     { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
     --
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
+    { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    { import = "lazyvim.plugins.extras.editor.mini-move" },
     { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },
@@ -45,10 +40,13 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.toml" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
+    --
+    { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.gitui" },
-    -- NOTE: END Custom
+    { import = "lazyvim.plugins.extras.util.startuptime" },
     -- import/override with your plugins
     { import = "plugins" },
+    --
     { import = "lazyvim.plugins.extras.util.project" },
   },
   defaults = {
