@@ -2,6 +2,9 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
+-- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
+
 local log = require('vlog')
 
 -- Disable autoformat for lua files
@@ -12,7 +15,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
+-- NOTE: Auto open nvim-tree when open a buffer
 local function open_nvim_tree(args)
   -- buffer is a real file on the disk
   local real_file = vim.fn.filereadable(args.file) == 1
@@ -28,10 +31,9 @@ local function open_nvim_tree(args)
   require("nvim-tree.api").tree.open({ focus = false, find_file = true })
 end
 
--- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = open_nvim_tree })
 
--- NOTE: erlangparasu 2024
+-- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 local function find_code_snippets()
   local plenary = require('plenary.scandir')
   local cwd = vim.fn.getcwd()
@@ -81,9 +83,9 @@ local function load_snippets_from_workdir(args)
   find_code_snippets()
 end
 
--- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = load_snippets_from_workdir })
 
+-- NOTE: Disable highlighter when open .sql file
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "sql",
   callback = function()
