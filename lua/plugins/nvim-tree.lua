@@ -1,4 +1,8 @@
 return {
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
+  },
   -- {
   --   "nvim-treesitter/nvim-treesitter",
   --   version = "*",
@@ -21,7 +25,7 @@ return {
           number = false,
           relativenumber = false,
           signcolumn = "yes", -- Display icons
-          width = 50,
+          width = 60,
         },
         diagnostics = {
           enable = true,
