@@ -7,7 +7,7 @@ local map = LazyVim.safe_keymap_set
 -- Reference: https://github.com/folke/persistence.nvim/blob/5fe077056c821aab41f87650bd6e1c48cd7dd047/README.md?plain=1#L54
 -- map("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
 
-map("n", "<leader>fo", ":NvimTreeOpen<CR>", { noremap = true, desc = "Open File Tree" })
+map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "Open File Explorer (nvim-tree)" })
 
 if vim.g.neovide then
     -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
@@ -31,10 +31,10 @@ if vim.fn.has("mac") then
   map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 end
 
-map('n', '<leader>ci', [[<cmd>lua require("luasnip.loaders.from_vscode").load({ paths = { "./.vscode" } })<cr>]], {
-  noremap = true,
-  desc = "Load snippets"
-})
+-- map('n', '<leader>ci', [[<cmd>lua require("luasnip.loaders.from_vscode").load({ paths = { "./.vscode" } })<cr>]], {
+--   noremap = true,
+--   desc = "Load snippets"
+-- })
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
