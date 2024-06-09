@@ -55,7 +55,7 @@ local function find_code_snippets()
         -- log.info("  The string does not contain the substring.")
       else
         require("luasnip.loaders.from_vscode").load_standalone({ lazy = false, path = file })
-        log.info("  Snippet loaded: " .. file)
+        -- log.info("  Snippet loaded: " .. file)
       end
     end
   else
