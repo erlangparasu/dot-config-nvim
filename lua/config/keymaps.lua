@@ -66,9 +66,13 @@ end, { desc = "Terminal visual selection" })
 -- NOTE: Ref: https://github.com/akinsho/toggleterm.nvim/issues/34#issuecomment-966292397
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
-  cmd = "lazygit",
   hidden = true,
+  count = 8,
+  --
+  cmd = "lazygit",
+  display_name = "lazygit",
   direction = "float",
+  close_on_exit = true,
   on_open = function(term)
     vim.cmd("startinsert!")
     vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
