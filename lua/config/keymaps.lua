@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 
 local map = LazyVim.safe_keymap_set
+-- vim.keymap.set()
 
 -- Reference: https://github.com/folke/persistence.nvim/blob/5fe077056c821aab41f87650bd6e1c48cd7dd047/README.md?plain=1#L54
 -- map("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
@@ -48,3 +49,41 @@ end, { desc = "Terminal visual lines" })
 map("v", "<leader>ts", function()
   require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
 end, { desc = "Terminal visual selection" })
+
+-- NOTE: Fix lazygit in Terminal
+
+-- NOTE: Ref: https://github.com/akinsho/toggleterm.nvim/issues/505#issuecomment-1791403431
+-- map("n", "<Leader>z", function()
+--   local lazygit = require("toggleterm.terminal").Terminal:new({
+--       cmd = "lazygit",
+--       hidden = true,
+--       direction = "float",
+--       -- Enable full screen: https://github.com/akinsho/toggleterm.nvim/issues/505
+--       float_opts = {
+--           width = vim.o.columns,
+--           height = vim.o.lines,
+--       },
+--   })
+--   lazygit:toggle()
+-- end, { desc = "lazygit in Terminal" })
+
+-- NOTE: Ref: https://github.com/akinsho/toggleterm.nvim/issues/34#issuecomment-966292397
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  hidden = true,
+  direction = "float",
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", {silent = false, noremap = true})
+    if vim.fn.mapcheck("<esc>", "t") ~= "" then
+      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
+    end
+  end,
+})
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
