@@ -5,9 +5,6 @@
 local map = LazyVim.safe_keymap_set
 -- vim.keymap.set()
 
--- Reference: https://github.com/folke/persistence.nvim/blob/5fe077056c821aab41f87650bd6e1c48cd7dd047/README.md?plain=1#L54
--- map("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
-
 map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "Open File Explorer (nvim-tree)" })
 
 if vim.g.neovide then
@@ -39,7 +36,6 @@ end
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
--- vim.keymap.set
 map("v", "<leader>tL", function()
     require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
 end, { desc = "Terminal single line" })
@@ -75,7 +71,7 @@ local lazygit = Terminal:new({
   direction = "float",
   on_open = function(term)
     vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", {silent = false, noremap = true})
+    vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
     if vim.fn.mapcheck("<esc>", "t") ~= "" then
       vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
     end
@@ -86,4 +82,4 @@ function _lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
