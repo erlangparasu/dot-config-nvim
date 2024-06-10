@@ -1,7 +1,7 @@
 return {
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "storm" },
-  }
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = true,
+  --   opts = { style = "storm" },
+  -- }
 }
