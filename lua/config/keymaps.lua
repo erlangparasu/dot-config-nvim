@@ -106,13 +106,35 @@ local function _find_code_snippets()
       if string.find(text1, substring1, 0, true) == nil then
         -- log.info("  The string does not contain the substring.")
       else
-        require("luasnip.loaders.from_vscode").load_standalone({ lazy = false, path = file })
+        require("luasnip.loaders.from_vscode").load_standalone({ lazy = true, path = file })
         log.info("  Snippet loaded: " .. file)
       end
     end
   else
     -- log.info('No .code-snippets files found in the CWD.')
   end
+
+
+  -- LuaSnip
+  local vscode_dir = vim.fs.find('.vscode', {
+    upward = true,
+    type = 'directory',
+    path = vim.fn.getcwd(),
+    stop = vim.env.HOME,
+  })[1]
+
+  if vscode_dir then
+    local snippets = vim.fs.find(function(name) return name:match('%.code%-snippets$') end, {
+      limit = 10,
+      type = 'file',
+      path = vscode_dir,
+    })
+    local loader = require('luasnip.loaders.from_vscode')
+    for _, snippet in pairs(snippets) do
+      loader.load_standalone({ path = snippet })
+      log.info("  Snippet loaded again: " .. snippet)
+    end
+  end
 end
 
-vim.keymap.set("n", "<leader>cc", _find_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
+vim.keymap.set("n", "<leader>cz", _find_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
