@@ -5,8 +5,6 @@
 -- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 
-local log = require('vlog')
-
 -- Disable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "lua" },
@@ -35,6 +33,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost"
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 local function find_code_snippets()
+  local log = require('vlog')
   local plenary = require('plenary.scandir')
   local cwd = vim.fn.getcwd()
 
@@ -55,7 +54,7 @@ local function find_code_snippets()
         -- log.info("  The string does not contain the substring.")
       else
         require("luasnip.loaders.from_vscode").load_standalone({ lazy = false, path = file })
-        -- log.info("  Snippet loaded: " .. file)
+        log.info("  Snippet loaded: " .. file)
       end
     end
   else
@@ -64,6 +63,8 @@ local function find_code_snippets()
 end
 
 local function load_snippets_from_workdir(args)
+  local log = require('vlog')
+
   -- buffer is a real file on the disk
   local real_file = vim.fn.filereadable(args.file) == 1
 

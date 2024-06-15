@@ -29,11 +29,6 @@ if vim.fn.has("mac") then
   map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 end
 
--- map('n', '<leader>ci', [[<cmd>lua require("luasnip.loaders.from_vscode").load({ paths = { "./.vscode" } })<cr>]], {
---   noremap = true,
---   desc = "Load snippets"
--- })
-
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
 map("v", "<leader>tL", function()
@@ -87,3 +82,37 @@ function _lazygit_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+
+
+-- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
+local function _find_code_snippets()
+  local log = require('vlog')
+  local plenary = require('plenary.scandir')
+  local cwd = vim.fn.getcwd()
+
+  local files = plenary.scan_dir(cwd .. "/.vscode", {
+    depth = 2,
+    hidden = true,
+    search_pattern = ".code[-]snippets$" -- extension ".code-snippets"
+  })
+
+  if #files > 0 then
+    for _, file in ipairs(files) do
+      -- log.info('- ' .. file)
+
+      local text1 = file
+      local substring1 = ".code-snippets"
+
+      if string.find(text1, substring1, 0, true) == nil then
+        -- log.info("  The string does not contain the substring.")
+      else
+        require("luasnip.loaders.from_vscode").load_standalone({ lazy = false, path = file })
+        log.info("  Snippet loaded: " .. file)
+      end
+    end
+  else
+    -- log.info('No .code-snippets files found in the CWD.')
+  end
+end
+
+vim.keymap.set("n", "<leader>cc", _find_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
