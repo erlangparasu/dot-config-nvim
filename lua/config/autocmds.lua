@@ -33,6 +33,8 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost"
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 local function find_code_snippets()
+  require("luasnip.loaders.from_vscode").lazy_load()
+
   local log = require('vlog')
   local plenary = require('plenary.scandir')
   local cwd = vim.fn.getcwd()
@@ -63,6 +65,8 @@ local function find_code_snippets()
 end
 
 local function load_snippets_from_workdir(args)
+  require("luasnip.loaders.from_vscode").lazy_load()
+
   local log = require('vlog')
 
   -- buffer is a real file on the disk
@@ -99,7 +103,7 @@ local function load_snippets_from_workdir(args)
     })
     local loader = require('luasnip.loaders.from_vscode')
     for _, snippet in pairs(snippets) do
-      loader.load_standalone({ path = snippet })
+      loader.load_standalone({ lazy = true, path = snippet })
       log.info("  Snippet loaded again: " .. snippet)
     end
   end

@@ -86,6 +86,8 @@ vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", { n
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 local function _find_code_snippets()
+  require("luasnip.loaders.from_vscode").lazy_load()
+
   local log = require('vlog')
   local plenary = require('plenary.scandir')
   local cwd = vim.fn.getcwd()
@@ -131,7 +133,7 @@ local function _find_code_snippets()
     })
     local loader = require('luasnip.loaders.from_vscode')
     for _, snippet in pairs(snippets) do
-      loader.load_standalone({ path = snippet })
+      loader.load_standalone({ lazy = true, path = snippet })
       log.info("  Snippet loaded again: " .. snippet)
     end
   end
