@@ -86,8 +86,6 @@ vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", { n
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 local function _find_code_snippets()
-  require("luasnip.loaders.from_vscode").lazy_load()
-
   local log = require('vlog')
   local plenary = require('plenary.scandir')
   local cwd = vim.fn.getcwd()
@@ -108,7 +106,7 @@ local function _find_code_snippets()
       if string.find(text1, substring1, 0, true) == nil then
         -- log.info("  The string does not contain the substring.")
       else
-        require("luasnip.loaders.from_vscode").load_standalone({ lazy = true, path = file })
+        require("luasnip.loaders.from_vscode").load_standalone({ lazy = false, path = file })
         log.info("  Snippet loaded: " .. file)
       end
     end
@@ -133,10 +131,18 @@ local function _find_code_snippets()
     })
     local loader = require('luasnip.loaders.from_vscode')
     for _, snippet in pairs(snippets) do
-      loader.load_standalone({ lazy = true, path = snippet })
+      loader.load_standalone({ lazy = false, path = snippet })
       log.info("  Snippet loaded again: " .. snippet)
     end
   end
 end
 
 vim.keymap.set("n", "<leader>cz", _find_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
+
+--
+vim.keymap.set({"i"}, "<C-X>", '<Cmd>lua require("luasnip").expand()<CR>', { noremap = true, silent = true, desc = "my custom 1" })
+vim.keymap.set({"i", "s"}, "<M-L>", '<Cmd>lua require("luasnip").jump( 1)<CR>', { noremap = true, silent = true, desc = "my custom 2" })
+vim.keymap.set({"i", "s"}, "<M-J>", '<Cmd>lua require("luasnip").jump(-1)<CR>', { noremap = true, silent = true, desc = "my custom 3" })
+
+--
+vim.keymap.set({"i"}, "<C-Z>", '<Cmd>lua require("cmp").mapping.complete()<CR>', { noremap = true, silent = true, desc = "my custom 4" })
