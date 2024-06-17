@@ -17,7 +17,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
-      table.insert(opts.sources, { name = "vsnip", group_index = 0 })
+      table.insert(opts.sources, { name = "vsnip" })
       table.insert(opts.sources, { name = "nvim_lsp" })
       table.insert(opts.sources, { name = "nvim_lsp_signature_help" })
       table.insert(opts.sources, { name = "nvim_lua" })
