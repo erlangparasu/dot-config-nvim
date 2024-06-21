@@ -7,16 +7,33 @@ local map = LazyVim.safe_keymap_set
 
 map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explorer (nvim-tree)" })
 
+
+-- if vim.g.neovide then
+--   -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
+--   -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
+--   map('v', '<sc-c>', '"+y', { noremap = true })
+--   map('n', '<sc-v>', 'l"+P', { noremap = true })
+--   map('v', '<sc-v>', '"+P', { noremap = true })
+--   map('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
+--   map('i', '<sc-v>', '<ESC>l"+Pli', { noremap = true })
+--   map('t', '<sc-v>', '<C-\\><C-n>"+Pi', { noremap = true })
+-- end
+
 if vim.g.neovide then
-  -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
-  -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
-  map('v', '<sc-c>', '"+y', { noremap = true })
-  map('n', '<sc-v>', 'l"+P', { noremap = true })
-  map('v', '<sc-v>', '"+P', { noremap = true })
-  map('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
-  map('i', '<sc-v>', '<ESC>l"+Pli', { noremap = true })
-  map('t', '<sc-v>', '<C-\\><C-n>"+Pi', { noremap = true })
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 end
+
+-- Allow clipboard copy paste in neovim
+vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+
 
 -- Resize window using <ctrl> arrow keys
 -- Reference:
