@@ -6,3 +6,8 @@
 vim.opt.clipboard='unnamedplus'
 
 vim.o.guifont = "JetBrainsMono Nerd Font:h13" -- text below applies for VimScript
+
+-- LSP Server to use for PHP.
+-- Set to "intelephense" to use intelephense instead of phpactor.
+vim.g.lazyvim_php_lsp = "intelephense"
+
