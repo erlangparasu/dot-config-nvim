@@ -5,6 +5,7 @@
 -- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 
+
 -- Disable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "lua" },
@@ -13,23 +14,25 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- NOTE: Auto open nvim-tree when open a buffer
-local function open_nvim_tree(args)
-  -- buffer is a real file on the disk
-  local real_file = vim.fn.filereadable(args.file) == 1
 
-  -- buffer is a [No Name]
-  local no_name = args.file == "" and vim.bo[args.buf].buftype == ""
+-- -- NOTE: Auto open nvim-tree when open a buffer
+-- local function open_nvim_tree(args)
+--   -- buffer is a real file on the disk
+--   local real_file = vim.fn.filereadable(args.file) == 1
 
-  if not real_file and not no_name then
-    return
-  end
+--   -- buffer is a [No Name]
+--   local no_name = args.file == "" and vim.bo[args.buf].buftype == ""
 
-  -- open the tree, find the file but don't focus it
-  require("nvim-tree.api").tree.open({ focus = false, find_file = true })
-end
+--   if not real_file and not no_name then
+--     return
+--   end
 
-vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = open_nvim_tree })
+--   -- open the tree, find the file but don't focus it
+--   require("nvim-tree.api").tree.open({ focus = false, find_file = true })
+-- end
+
+-- vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = open_nvim_tree })
+
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 -- local function find_code_snippets()
@@ -106,6 +109,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost"
 -- end
 
 -- vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = load_snippets_from_workdir })
+
 
 -- -- NOTE: Disable highlighter when open .sql file
 -- vim.api.nvim_create_autocmd("FileType", {
