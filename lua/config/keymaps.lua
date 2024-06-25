@@ -5,7 +5,8 @@
 local map = LazyVim.safe_keymap_set
 -- vim.keymap.set()
 
-map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explorer (nvim-tree)" })
+map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Open" })
+map("n", "<leader>E", ":NvimTreeClose<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Close" })
 
 
 -- if vim.g.neovide then
@@ -94,14 +95,16 @@ local lazygit = Terminal:new({
   end,
 })
 
-function _lazygit_toggle()
+function Custom_Lazygit_Toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+vim.api.nvim_set_keymap("n", "<leader>gy", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 
-
--- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
+-- NOTE: Load *.code-snippets files (from .vscode directory)
 local function _load_code_snippets()
   local log = require('vlog')
   local plenary = require('plenary.scandir')
@@ -154,7 +157,7 @@ local function _load_code_snippets()
   end
 end
 
-vim.keymap.set("n", "<leader>cz", _load_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
+vim.keymap.set("n", "<leader>fS", _load_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
 
 -- --
 -- vim.keymap.set({"i"}, "<C-X>", '<Cmd>lua require("luasnip").expand()<CR>', { noremap = true, silent = true, desc = "my custom 1" })
@@ -163,3 +166,5 @@ vim.keymap.set("n", "<leader>cz", _load_code_snippets, { noremap = true, silent 
 
 -- --
 -- vim.keymap.set({"i"}, "<C-Z>", '<Cmd>lua require("cmp").mapping.complete()<CR>', { noremap = true, silent = true, desc = "my custom 4" })
+
+-- EOF
