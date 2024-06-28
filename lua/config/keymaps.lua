@@ -49,10 +49,10 @@ end
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
-map("v", "<leader>tL", function()
+map("v", "<leader>tl", function()
     require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
 end, { desc = "Terminal single line" })
-map("v", "<leader>tl", function()
+map("v", "<leader>tL", function()
   require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
 end, { desc = "Terminal visual lines" })
 map("v", "<leader>ts", function()
