@@ -35,11 +35,13 @@ return {
         update_focused_file = {
           enable = true,
           update_root = {
-            enable = false,
+            enable = true,
             ignore_list = {},
           },
           exclude = false,
         },
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
       })
     end,
   }
