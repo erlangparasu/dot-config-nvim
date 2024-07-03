@@ -49,15 +49,15 @@ end
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
-map("v", "<leader>tl", function()
+map("v", "<leader>t1", function()
     require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
-end, { desc = "Terminal single line" })
-map("v", "<leader>tL", function()
+end, { desc = "Execute line in terminal" })
+map("v", "<leader>te", function()
   require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
-end, { desc = "Terminal visual lines" })
-map("v", "<leader>ts", function()
+end, { desc = "Execute lines in terminal" })
+map("v", "<leader>tE", function()
   require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
-end, { desc = "Terminal visual selection" })
+end, { desc = "Execute selected in terminal" })
 
 -- NOTE: Fix lazygit in Terminal
 
