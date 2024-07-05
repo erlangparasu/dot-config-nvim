@@ -8,7 +8,25 @@ vim.opt.clipboard='unnamedplus'
 
 vim.opt.relativenumber = false
 
-vim.o.guifont = "JetBrainsMono Nerd Font:h13" -- text below applies for VimScript
+vim.o.guifont = "JetBrainsMonoNL Nerd Font:h13" -- text below applies for VimScript
+
+vim.opt.sessionoptions = {
+  -- "blank",
+  "buffers",
+  "curdir",
+  -- "folds",
+  -- "globals",
+  -- "help",
+  -- "localoptions",
+  -- "options",
+  -- "skiprtp",
+  "resize",
+  -- "sesdir",
+  "tabpages",
+  "terminal",
+  "winpos",
+  "winsize",
+}
 
 -- LSP Server to use for PHP.
 -- Set to "intelephense" to use intelephense instead of phpactor.
