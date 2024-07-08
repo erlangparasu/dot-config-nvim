@@ -3,7 +3,7 @@ return {
     "princejoogie/dir-telescope.nvim",
     enabled = true,
     -- telescope.nvim is a required dependency
-    requires = {
+    dependencies = {
       "nvim-telescope/telescope.nvim",
     },
     config = function()

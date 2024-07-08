@@ -2,7 +2,7 @@ return {
   {
     "https://git.sr.ht/~havi/telescope-toggleterm.nvim",
     event = "TermOpen",
-    requires = {
+    dependencies = {
       "akinsho/toggleterm.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-lua/popup.nvim",
