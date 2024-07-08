@@ -30,7 +30,7 @@ return {
             text_align = "left",
           },
         },
-        -- separator_style = "slant",
+        separator_style = "slant",
         ---@param opts bufferline.IconFetcherOpts
         get_element_icon = function(opts)
           return LazyVim.config.icons.ft[opts.filetype]
