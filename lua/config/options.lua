@@ -32,3 +32,4 @@ vim.opt.sessionoptions = {
 -- Set to "intelephense" to use intelephense instead of phpactor.
 vim.g.lazyvim_php_lsp = "intelephense"
 
+vim.o.showtabline = 2
