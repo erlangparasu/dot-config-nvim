@@ -28,6 +28,7 @@ return {
         end,
         desc = "ToggleTerm (vertical root_dir)",
       },
+
       {
         "<leader>tn",
         "<cmd>ToggleTermSetName<cr>",
@@ -38,19 +39,64 @@ return {
         "<cmd>TermSelect<cr>",
         desc = "Select term",
       },
+
+      -- {
+      --   "<leader>tt",
+      --   function()
+      --     require("toggleterm").toggle(1, 100, LazyVim.root.get(), "tab")
+      --   end,
+      --   desc = "ToggleTerm (tab root_dir)",
+      -- },
+      -- {
+      --   "<leader>tT",
+      --   function()
+      --     require("toggleterm").toggle(1, 100, vim.fn.getcwd(), "tab")
+      --   end,
+      --   desc = "ToggleTerm (tab cwd_dir)",
+      -- },
+
+      -- NOTE: Static count for fast motion
       {
-        "<leader>tt",
+        "<leader>t1",
         function()
-          require("toggleterm").toggle(1, 100, LazyVim.root.get(), "tab")
+          require("toggleterm").toggle(1, 15, vim.fn.getcwd(), "horizontal")
         end,
-        desc = "ToggleTerm (tab root_dir)",
+        desc = "ToggleTerm #1 (cwd)",
       },
       {
-        "<leader>tT",
+        "<leader>t2",
         function()
-          require("toggleterm").toggle(1, 100, vim.loop.cwd(), "tab")
+          require("toggleterm").toggle(2, 15, vim.fn.getcwd(), "horizontal")
         end,
-        desc = "ToggleTerm (tab cwd_dir)",
+        desc = "ToggleTerm #2 (cwd)",
+      },
+      {
+        "<leader>t3",
+        function()
+          require("toggleterm").toggle(3, 15, vim.fn.getcwd(), "horizontal")
+        end,
+        desc = "ToggleTerm #3 (cwd)",
+      },
+      {
+        "<leader>t4",
+        function()
+          require("toggleterm").toggle(4, 15, vim.fn.getcwd(), "horizontal")
+        end,
+        desc = "ToggleTerm #4 (cwd)",
+      },
+      {
+        "<leader>t5",
+        function()
+          require("toggleterm").toggle(5, 15, vim.fn.getcwd(), "horizontal")
+        end,
+        desc = "ToggleTerm #5 (cwd)",
+      },
+      {
+        "<leader>t6",
+        function()
+          require("toggleterm").toggle(6, 15, vim.fn.getcwd(), "horizontal")
+        end,
+        desc = "ToggleTerm #6 (cwd)",
       },
     },
     opts = {
