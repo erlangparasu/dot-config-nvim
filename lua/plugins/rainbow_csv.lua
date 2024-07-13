@@ -1,6 +1,6 @@
 return {
   {
     "mechatroner/rainbow_csv",
-    enabled = true,
+    ft = { "csv" },
   }
 }
