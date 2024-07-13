@@ -7,5 +7,14 @@
 
 My personal Neovim config
 
-- lazy.nvim
-- lazyvim
+- "LazyVim"
+- "diffview.nvim"
+- "flutter-tools.nvim"
+- "lazy.nvim"
+- "nvim-tree.lua"
+- "project.nvim"
+- "refactoring.nvim"
+- "rustaceanvim"
+- "scope.nvim"
+- "tabby.nvim"
+- "vim-visual-multi"
