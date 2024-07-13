@@ -1,7 +1,7 @@
 return {
   {
     "tiagovla/scope.nvim",
-    event = "VeryLazy",
+    enabled = true,
     opts = {},
     config = function()
       require("scope").setup({})
