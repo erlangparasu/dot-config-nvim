@@ -10,6 +10,14 @@ map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explor
 map("n", "<leader>E", ":NvimTreeClose<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Close" })
 
 
+-- NOTE: ToggleTerm Manager
+function Fun_Open_ToggleTerm_Manager()
+  vim.cmd(':Telescope toggleterm_manager')
+end
+
+vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
+
+
 -- if vim.g.neovide then
 --   -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
 --   -- NOTE: Ctrl+Shift+C to Copy, Ctrl+Shitf+V to paste
