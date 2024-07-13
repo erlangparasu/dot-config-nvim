@@ -31,7 +31,7 @@ return {
             "term_icon", -- a terminal icon
             "term_name", -- toggleterm's display_name if it exists, else the terminal's id assigned by toggleterm
           },
-          separator = " ", -- the character that will be used to separate each field provided in results.fields  
+          separator = " ", -- the character that will be used to separate each field provided in results.fields
           term_icon = "", -- the icon that will be used for term_icon in results.fields
         },
         search = {
@@ -39,7 +39,7 @@ return {
         },
         sort = {
           field = "term_name", -- the field that will be used for sorting in the telesocpe results
-        ascending = true, -- whether or not the field provided above will be sorted in ascending or descending order
+          ascending = true, -- whether or not the field provided above will be sorted in ascending or descending order
         },
       }
     end
