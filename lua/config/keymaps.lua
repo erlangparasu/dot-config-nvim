@@ -68,12 +68,15 @@ end
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
-map("v", "<leader>t1", function()
-    require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
-end, { desc = "Execute line in terminal" })
+
+-- map("v", "<leader>t1", function()
+--     require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
+-- end, { desc = "Execute line in terminal" })
+
 map("v", "<leader>te", function()
   require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
 end, { desc = "Execute lines in terminal" })
+
 map("v", "<leader>tE", function()
   require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
 end, { desc = "Execute selected in terminal" })
