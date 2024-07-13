@@ -5,18 +5,23 @@
 local map = LazyVim.safe_keymap_set
 -- vim.keymap.set()
 
+-- NOTE: nvim-tree --------------------------------------------------
 
 map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Open" })
 map("n", "<leader>E", ":NvimTreeClose<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Close" })
 
+-- NOTE: toggleterm-manager -----------------------------------------
 
--- NOTE: ToggleTerm Manager
 function Fun_Open_ToggleTerm_Manager()
   vim.cmd(':Telescope toggleterm_manager')
 end
-
 vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
 
+-- NOTE: telescope-search-dir-picker --------------------------------
+
+vim.api.nvim_set_keymap("n", "<leader>si", "<cmd>:Telescope search_dir_picker<CR>", { noremap = true, silent = true, desc = "Search text in directory" })
+
+-- NOTE: neovide ----------------------------------------------------
 
 -- if vim.g.neovide then
 --   -- NOTE: https://github.com/neovide/neovide/issues/1282#issuecomment-2106304616
@@ -38,12 +43,15 @@ if vim.g.neovide then
   vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 end
 
+-- NOTE: clipboard --------------------------------------------------
+
 -- Allow clipboard copy paste in neovim
 vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
+-- NOTE: macos window -----------------------------------------------
 
 -- Resize window using <ctrl> arrow keys
 -- Reference:
@@ -56,6 +64,7 @@ if vim.fn.has("mac") then
   map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 end
 
+-- NOTE: toggleterm -------------------------------------------------
 
 -- NOTE: Run selected text in Terminal
 local trim_spaces = true
@@ -69,6 +78,7 @@ map("v", "<leader>tE", function()
   require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
 end, { desc = "Execute selected in terminal" })
 
+-- NOTE: lazygit ----------------------------------------------------
 
 -- NOTE: Fix lazygit in Terminal
 
@@ -115,8 +125,8 @@ vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua Custom_Lazygit_Toggle()<CR>
 vim.api.nvim_set_keymap("n", "<leader>gy", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 
+-- NOTE: Load *.code-snippets files (from .vscode directory) --------
 
--- NOTE: Load *.code-snippets files (from .vscode directory)
 local function _load_code_snippets()
   local log = require('vlog')
   local plenary = require('plenary.scandir')
@@ -171,7 +181,6 @@ end
 
 vim.keymap.set("n", "<leader>fS", _load_code_snippets, { noremap = true, silent = true, desc = "Load .vscode snippets" })
 
-
 -- --
 -- vim.keymap.set({"i"}, "<C-X>", '<Cmd>lua require("luasnip").expand()<CR>', { noremap = true, silent = true, desc = "my custom 1" })
 -- vim.keymap.set({"i", "s"}, "<M-L>", '<Cmd>lua require("luasnip").jump( 1)<CR>', { noremap = true, silent = true, desc = "my custom 2" })
@@ -180,7 +189,8 @@ vim.keymap.set("n", "<leader>fS", _load_code_snippets, { noremap = true, silent 
 -- --
 -- vim.keymap.set({"i"}, "<C-Z>", '<Cmd>lua require("cmp").mapping.complete()<CR>', { noremap = true, silent = true, desc = "my custom 4" })
 
--- NOTE: Open Yazi
+-- NOTE: Open Yazi --------------------------------------------------
+
 local my_terminal = require("toggleterm.terminal").Terminal
 local my_yazi_term = my_terminal:new({
   hidden = true,
@@ -224,15 +234,15 @@ local my_yazi_term = my_terminal:new({
   end,
 })
 
-function my_yazi_terminal_toggle()
+function My_yazi_terminal_toggle()
   my_yazi_term:toggle()
 end
 
-vim.keymap.set("n", "<leader>y", my_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Open Yazi" })
+vim.keymap.set("n", "<leader>y", My_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Open Yazi" })
 
+-- NOTE: Change local current dir (lcd) -----------------------------
 
--- NOTE: Change local current dir (lcd)
-function my_lcd()
+function My_lcd()
   local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
   print(my_str)
   -- Change the current working directory to the selected directory
@@ -240,6 +250,6 @@ function my_lcd()
   print("Done2!")
 end
 
-vim.keymap.set("n", "<leader>Y", my_lcd, { noremap = true, silent = true, desc = "Use last stored lcd" })
+vim.keymap.set("n", "<leader>Y", My_lcd, { noremap = true, silent = true, desc = "Use last stored lcd" })
 
 -- EOF
