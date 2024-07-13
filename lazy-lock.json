@@ -80,12 +80,12 @@
   "venv-selector.nvim": { "branch": "regexp", "commit": "542a38a4e673476119f6877eff8dce9a74142d49" },
   "vim-dadbod": { "branch": "master", "commit": "7888cb7164d69783d3dce4e0283decd26b82538b" },
   "vim-dadbod-completion": { "branch": "master", "commit": "8c9051c1cfc73fcf5bfe9a84db7097e4f7c0180d" },
-  "vim-dadbod-ui": { "branch": "master", "commit": "d2ffc1bdae3041105f3b57423e0e81a5d9429267" },
+  "vim-dadbod-ui": { "branch": "master", "commit": "f74a31e8c6c5a9dccc63450a09d5cd64a9294330" },
   "vim-flog": { "branch": "master", "commit": "255631abf7ea132393fc7dd745d6911c37ac6a4c" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-visual-multi": { "branch": "master", "commit": "38b0e8d94a5499ccc17d6159763d32c79f53417b" },
   "vlog.nvim": { "branch": "master", "commit": "300e43f1628935aa9fec0560f3c7c483b3d38db2" },
-  "which-key.nvim": { "branch": "main", "commit": "b695114ddb251185625f61317317a39b67e80643" },
+  "which-key.nvim": { "branch": "main", "commit": "5a6eaaa4ebc072625b9fc906943e3798028bd817" },
   "yanky.nvim": { "branch": "main", "commit": "73215b77d22ebb179cef98e7e1235825431d10e4" }
 }
