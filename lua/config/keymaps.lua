@@ -213,27 +213,29 @@ local my_yazi_term = my_terminal:new({
   end,
   on_close = function(term)
     local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
-    print("on_close:" .. my_str)
+    print("on_close: " .. my_str)
 
-    -- Change the current working directory to the selected directory
-    vim.cmd("lcd " .. my_str)
+    -- Change the Tab's current working directory to the selected directory
+    vim.cmd("tcd " .. my_str)
     vim.schedule(function()
-      vim.cmd("lcd " .. my_str)
+      vim.cmd("tcd " .. my_str)
+      vim.cmd("verbose pwd")
     end)
 
-    print("Done.1")
+    print("yazi close: " .. my_str)
   end,
   on_exit = function()
     local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
-    print("on_exit:" .. my_str)
+    print("on_exit: " .. my_str)
 
-    -- Change the current working directory to the selected directory
-    vim.cmd("lcd " .. my_str)
+    -- Change the Tab's current working directory to the selected directory
+    vim.cmd("tcd " .. my_str)
     vim.schedule(function()
-      vim.cmd("lcd " .. my_str)
+      vim.cmd("tcd " .. my_str)
+      vim.cmd("verbose pwd")
     end)
 
-    print("Done.2")
+    print("yazi exit: " .. my_str)
   end,
 })
 
@@ -241,18 +243,24 @@ function My_yazi_terminal_toggle()
   my_yazi_term:toggle()
 end
 
-vim.keymap.set("n", "<leader>y", My_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Open Yazi" })
+vim.keymap.set("n", "<leader>y", My_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Select for :tcd using yazi" })
 
--- NOTE: Change local current dir (lcd) -----------------------------
+-- NOTE: Change window current dir (lcd) -----------------------------
 
 function My_lcd()
   local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
-  print(my_str)
+  print('tmp yazi cwd: ' .. my_str)
+
   -- Change the current working directory to the selected directory
   vim.cmd("lcd " .. my_str)
-  print("Done2!")
+  vim.schedule(function()
+    vim.cmd("lcd " .. my_str)
+    vim.cmd("verbose pwd")
+  end)
+
+  print("lcd to: " .. my_str)
 end
 
-vim.keymap.set("n", "<leader>Y", My_lcd, { noremap = true, silent = true, desc = "Use last stored lcd" })
+vim.keymap.set("n", "<leader>Y", My_lcd, { noremap = true, silent = true, desc = "Apply for :lcd" })
 
 -- EOF
