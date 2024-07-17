@@ -17,6 +17,12 @@ function Fun_Open_ToggleTerm_Manager()
 end
 vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
 
+-- NOTE: Telescope tabs ---------------------------------------------
+function Fun_Telescope_Tabs()
+  vim.cmd(':Telescope telescope-tabs list_tabs')
+end
+vim.api.nvim_set_keymap("n", "<leader><tab>m", "<cmd>lua Fun_Telescope_Tabs()<CR>", { noremap = true, silent = true, desc = "Telescope Tabs Manager" })
+
 -- NOTE: telescope-search-dir-picker --------------------------------
 
 vim.api.nvim_set_keymap("n", "<leader>si", "<cmd>:Telescope search_dir_picker<CR>", { noremap = true, silent = true, desc = "Search text in directory" })
