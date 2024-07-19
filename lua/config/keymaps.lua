@@ -12,7 +12,7 @@ local map = LazyVim.safe_keymap_set
 
 -- NOTE: mini-files -------------------------------------------------
 
-map("n", "<leader>e", ":lua MiniFiles.open()<CR>", { noremap = true, desc = "File Explorer (mini.files)" })
+map("n", "<leader>m", ":lua MiniFiles.open()<CR>", { noremap = true, desc = "File Explorer (mini.files)" })
 
 -- NOTE: toggleterm-manager -----------------------------------------
 
