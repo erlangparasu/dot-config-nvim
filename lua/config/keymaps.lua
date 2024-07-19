@@ -130,9 +130,9 @@ function Custom_Lazygit_Toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
-vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
-vim.api.nvim_set_keymap("n", "<leader>gy", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
-vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+-- vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+-- vim.api.nvim_set_keymap("n", "<leader>gy", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+-- vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 
 -- NOTE: Load *.code-snippets files (from .vscode directory) --------
 
