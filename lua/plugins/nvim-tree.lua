@@ -11,6 +11,7 @@ return {
   -- },
   {
     "nvim-tree/nvim-tree.lua",
+    enabled = false,
     version = false,
     lazy = false,
     dependencies = {
