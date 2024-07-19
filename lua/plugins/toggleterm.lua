@@ -91,13 +91,6 @@ return {
         end,
         desc = "ToggleTerm #5 (cwd)",
       },
-      {
-        "<leader>t6",
-        function()
-          require("toggleterm").toggle(6, 15, vim.fn.getcwd(), "horizontal")
-        end,
-        desc = "ToggleTerm #6 (cwd)",
-      },
     },
     opts = {
       -- size can be a number or function which is passed the current terminal
