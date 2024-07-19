@@ -1,6 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
+    enabled = true,
     config = function()
       require("oil").setup({
         keymaps = {

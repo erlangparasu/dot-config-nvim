@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled = true,
     opts = function(_, opts)
       -- local a = vim.api
       -- local tel_actions = require("telescope.actions")

@@ -1,9 +1,5 @@
 return {
   {
-    "akinsho/bufferline.nvim",
-    enabled = false,
-  },
-  {
     "nanozuki/tabby.nvim",
     enabled = true,
     dependencies = "nvim-tree/nvim-web-devicons",

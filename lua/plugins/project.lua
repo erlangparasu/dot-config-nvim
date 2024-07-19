@@ -1,6 +1,7 @@
 return {
   {
     "ahmedkhalf/project.nvim",
+    enabled = true,
     opts = {
       active = true,
 
