@@ -139,3 +139,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --     vim.treesitter.highlighter.active = false
 --   end,
 -- })
+
+-- Eof.

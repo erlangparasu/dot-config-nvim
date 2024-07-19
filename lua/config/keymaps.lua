@@ -264,4 +264,4 @@ end
 
 vim.keymap.set("n", "<leader>Y", My_lcd, { noremap = true, silent = true, desc = "Apply for :lcd" })
 
--- EOF
+-- Eof.

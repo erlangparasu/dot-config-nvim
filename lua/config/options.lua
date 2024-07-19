@@ -28,14 +28,19 @@ vim.opt.sessionoptions = {
   "winsize",
 }
 
+vim.o.showtabline = 2
+
+-- NOTE: PHP
+
 -- LSP Server to use for PHP.
 -- Set to "intelephense" to use intelephense instead of phpactor.
 vim.g.lazyvim_php_lsp = "intelephense"
 
-vim.o.showtabline = 2
+-- NOTE: Neovide
 
 vim.g.neovide_refresh_rate = 60
 vim.g.neovide_no_idle = true
 -- vim.g.neovide_cursor_animation_length = 0.5
 -- vim.g.neovide_cursor_trail_size = 0.5
 
+-- Eof.
