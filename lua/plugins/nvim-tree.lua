@@ -1,8 +1,4 @@
 return {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
   -- {
   --   "nvim-treesitter/nvim-treesitter",
   --   version = "*",
