@@ -223,10 +223,7 @@ local my_yazi_term = my_terminal:new({
 
     -- Change the Tab's current working directory to the selected directory
     vim.cmd("tcd " .. my_str)
-    vim.schedule(function()
-      vim.cmd("tcd " .. my_str)
-      vim.cmd("verbose pwd")
-    end)
+    vim.cmd("verbose pwd")
 
     print("yazi close: " .. my_str)
   end,
@@ -236,10 +233,7 @@ local my_yazi_term = my_terminal:new({
 
     -- Change the Tab's current working directory to the selected directory
     vim.cmd("tcd " .. my_str)
-    vim.schedule(function()
-      vim.cmd("tcd " .. my_str)
-      vim.cmd("verbose pwd")
-    end)
+    vim.cmd("verbose pwd")
 
     print("yazi exit: " .. my_str)
   end,
@@ -259,10 +253,7 @@ function My_lcd()
 
   -- Change the current working directory to the selected directory
   vim.cmd("lcd " .. my_str)
-  vim.schedule(function()
-    vim.cmd("lcd " .. my_str)
-    vim.cmd("verbose pwd")
-  end)
+  vim.cmd("verbose pwd")
 
   print("lcd to: " .. my_str)
 end
