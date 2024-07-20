@@ -10,6 +10,8 @@ local map = LazyVim.safe_keymap_set
 -- map("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Open" })
 -- map("n", "<leader>E", ":NvimTreeClose<CR>", { noremap = true, desc = "File Explorer (nvim-tree) Close" })
 
+map("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, desc = "File Explorer (nvim-tree)" })
+
 -- NOTE: mini-files -------------------------------------------------
 
 map("n", "<leader>fm", ":lua MiniFiles.open()<CR>", { noremap = true, desc = "File Explorer (mini.files)" })
