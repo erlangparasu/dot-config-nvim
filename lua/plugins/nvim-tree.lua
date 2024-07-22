@@ -15,6 +15,9 @@ return {
     },
     config = function()
       require('nvim-tree').setup({
+        sync_root_with_cwd = true,
+        reload_on_bufenter = true,
+        respect_buf_cwd = true,
         view = {
           -- File explorer display position, left: left, right: right
           side = "left",
@@ -22,23 +25,34 @@ return {
           number = false,
           relativenumber = false,
           signcolumn = "yes", -- Display icons
-          width = 60,
+          width = 50,
+        },
+        update_focused_file = {
+          enable = true,
+          update_root = {
+            enable = false,
+            ignore_list = {},
+          },
+          exclude = false,
+        },
+        git = {
+          enable = true,
         },
         diagnostics = {
           enable = true,
           show_on_dirs = true,
           show_on_open_dirs = true,
         },
-        update_focused_file = {
+        modified = {
           enable = true,
-          update_root = {
-            enable = true,
-            ignore_list = {},
-          },
-          exclude = false,
+          show_on_dirs = true,
+          show_on_open_dirs = true,
         },
-        sync_root_with_cwd = true,
-        respect_buf_cwd = true,
+        actions = {
+          change_dir = {
+            restrict_above_cwd = true,
+          },
+        },
       })
     end,
   }
