@@ -7,9 +7,6 @@
 if vim.g.vscode then
   -- require("config.lazy")
 elseif vim.g.neovide then
-  -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
-  -- vim.g.neovide_cursor_vfx_mode = "ripple"
-
   require("config.lazy")
 else
   require("config.lazy")
