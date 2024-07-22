@@ -41,7 +41,11 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.neovide_input_macos_option_key_is_meta = 'both'
 vim.g.neovide_refresh_rate = 60
 vim.g.neovide_no_idle = true
--- vim.g.neovide_cursor_animation_length = 0.5
--- vim.g.neovide_cursor_trail_size = 0.5
+vim.g.neovide_cursor_smooth_blink = true
+vim.g.neovide_cursor_vfx_mode = "wireframe"
+vim.g.neovide_remember_window_size = true
+vim.g.neovide_confirm_quit = true
+vim.g.neovide_hide_mouse_when_typing = true
+vim.g.neovide_window_blurred = false
 
 -- Eof.
