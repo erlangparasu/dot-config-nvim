@@ -24,6 +24,7 @@ end
 vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
 
 -- NOTE: Telescope tabs ---------------------------------------------
+
 function Fun_Telescope_Tabs()
   vim.cmd(':Telescope telescope-tabs list_tabs')
 end
