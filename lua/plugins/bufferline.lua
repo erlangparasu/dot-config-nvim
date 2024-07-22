@@ -8,6 +8,8 @@ return {
         close_command = function(n) LazyVim.ui.bufremove(n) end,
         -- stylua: ignore
         right_mouse_command = function(n) LazyVim.ui.bufremove(n) end,
+        left_mouse_command = false,
+        middle_mouse_command = false,
         diagnostics = "nvim_lsp",
         always_show_bufferline = true,
         diagnostics_indicator = function(_, _, diag)
