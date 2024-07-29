@@ -65,7 +65,7 @@
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "rainbow_csv": { "branch": "master", "commit": "3dbbfd7d17536aebfb80f571255548495574c32b" },
-  "refactoring.nvim": { "branch": "master", "commit": "274fdd505ea19a10d14b7564b6d293408845091b" },
+  "refactoring.nvim": { "branch": "master", "commit": "c406fc5fb4d7ba5fce7b668637075fad6e75e9f8" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
   "scope.nvim": { "branch": "main", "commit": "86a0f5b594b08b2ad65f470ffdee81654942b6ac" },
   "screenkey.nvim": { "branch": "main", "commit": "6c9b5a8a38d56f425a44bb8e4d3d49e6bb0cfa7d" },
