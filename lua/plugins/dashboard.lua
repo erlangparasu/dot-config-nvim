@@ -33,5 +33,5 @@ return {
 
       return dashboard
     end,
-  },
+  }
 }

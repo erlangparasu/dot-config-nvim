@@ -4,8 +4,8 @@ return {
     enabled = true,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-tree.lua",
       -- "nvim-neo-tree/neo-tree.nvim",
+      "nvim-tree/nvim-tree.lua",
     },
     config = function()
       require("lsp-file-operations").setup {
@@ -24,5 +24,5 @@ return {
         timeout_ms = 60000,
       }
     end,
-  },
+  }
 }
