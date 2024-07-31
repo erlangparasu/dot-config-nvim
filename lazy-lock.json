@@ -20,7 +20,7 @@
   "flutter-tools.nvim": { "branch": "main", "commit": "5aa227fa083fd740184b55b5220dfabc24a25cc7" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
   "gitsigns.nvim": { "branch": "main", "commit": "f074844b60f9e151970fbcdbeb8a2cd52b6ef25a" },
-  "grug-far.nvim": { "branch": "main", "commit": "10a1ad724eee440c899d422d8e1c6383dbac469e" },
+  "grug-far.nvim": { "branch": "main", "commit": "6b30ef08464903ad6bcc77b906134c90fc1bc44d" },
   "inc-rename.nvim": { "branch": "main", "commit": "8ba77017ca468f3029bf88ef409c2d20476ea66b" },
   "indent-blankline.nvim": { "branch": "master", "commit": "65e20ab94a26d0e14acac5049b8641336819dfc7" },
   "kulala.nvim": { "branch": "main", "commit": "e9702dadb0443ceace983c4569e27de416715b07" },
