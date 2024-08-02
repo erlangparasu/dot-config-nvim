@@ -1,6 +1,7 @@
 return {
   {
     "https://git.sr.ht/~havi/telescope-toggleterm.nvim",
+    enabled = false,
     event = "TermOpen",
     dependencies = {
       "akinsho/toggleterm.nvim",

@@ -18,10 +18,10 @@ map("n", "<leader>fm", ":lua MiniFiles.open()<CR>", { noremap = true, desc = "Fi
 
 -- NOTE: toggleterm-manager -----------------------------------------
 
-function Fun_Open_ToggleTerm_Manager()
-  vim.cmd(':Telescope toggleterm_manager')
-end
-vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
+-- function Fun_Open_ToggleTerm_Manager()
+--   vim.cmd(':Telescope toggleterm_manager')
+-- end
+-- vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua Fun_Open_ToggleTerm_Manager()<CR>", { noremap = true, silent = true, desc = "ToggleTerm Manager" })
 
 -- NOTE: Telescope tabs ---------------------------------------------
 
@@ -86,13 +86,13 @@ local trim_spaces = true
 --     require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
 -- end, { desc = "Execute line in terminal" })
 
-map("v", "<leader>te", function()
-  require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
-end, { desc = "Execute lines in terminal" })
-
-map("v", "<leader>tE", function()
-  require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
-end, { desc = "Execute selected in terminal" })
+-- map("v", "<leader>te", function()
+--   require("toggleterm").send_lines_to_terminal("visual_lines", trim_spaces, { args = vim.v.count })
+-- end, { desc = "Execute lines in terminal" })
+--
+-- map("v", "<leader>tE", function()
+--   require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
+-- end, { desc = "Execute selected in terminal" })
 
 -- NOTE: lazygit ----------------------------------------------------
 
@@ -114,29 +114,29 @@ end, { desc = "Execute selected in terminal" })
 -- end, { desc = "lazygit in Terminal" })
 
 -- NOTE: Ref: https://github.com/akinsho/toggleterm.nvim/issues/34#issuecomment-966292397
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({
-  hidden = true,
-  count = 8,
-  --
-  cmd = "lazygit",
-  display_name = "lazygit",
-  direction = "float",
-  close_on_exit = true,
-  on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
-    end
-  end,
-})
-
-function Custom_Lazygit_Toggle()
-  lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
+-- local Terminal  = require('toggleterm.terminal').Terminal
+-- local lazygit = Terminal:new({
+--   hidden = true,
+--   count = 8,
+--   --
+--   cmd = "lazygit",
+--   display_name = "lazygit",
+--   direction = "float",
+--   close_on_exit = true,
+--   on_open = function(term)
+--     vim.cmd("startinsert!")
+--     vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
+--     if vim.fn.mapcheck("<esc>", "t") ~= "" then
+--       vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
+--     end
+--   end,
+-- })
+--
+-- function Custom_Lazygit_Toggle()
+--   lazygit:toggle()
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 -- vim.api.nvim_set_keymap("n", "<leader>gt", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 -- vim.api.nvim_set_keymap("n", "<leader>gy", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
 -- vim.api.nvim_set_keymap("n", "<leader>gz", "<cmd>lua Custom_Lazygit_Toggle()<CR>", { noremap = true, silent = true, desc = "Lazygit Terminal" })
@@ -207,50 +207,50 @@ vim.keymap.set("n", "<leader>fS", _load_code_snippets, { noremap = true, silent 
 
 -- NOTE: Open Yazi --------------------------------------------------
 
-local my_terminal = require("toggleterm.terminal").Terminal
-local my_yazi_term = my_terminal:new({
-  hidden = true,
-  count = 9,
-  --
-  cmd = 'touch "$HOME/.tmp-yazi-cwd.txt"; yazi --cwd-file="$HOME/.tmp-yazi-cwd.txt"',
-  display_name = "Yazi",
-  direction = "float",
-  close_on_exit = true,
-  on_open = function(term)
-    print("on_open")
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
-    end
-  end,
-  on_close = function(term)
-    local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
-    print("on_close: " .. my_str)
-
-    -- Change the Tab's current working directory to the selected directory
-    vim.cmd("tcd " .. my_str)
-    vim.cmd("verbose pwd")
-
-    print("yazi close: " .. my_str)
-  end,
-  on_exit = function()
-    local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
-    print("on_exit: " .. my_str)
-
-    -- Change the Tab's current working directory to the selected directory
-    vim.cmd("tcd " .. my_str)
-    vim.cmd("verbose pwd")
-
-    print("yazi exit: " .. my_str)
-  end,
-})
-
-function My_yazi_terminal_toggle()
-  my_yazi_term:toggle()
-end
-
-vim.keymap.set("n", "<leader>y", My_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Select for :tcd using yazi" })
+-- local my_terminal = require("toggleterm.terminal").Terminal
+-- local my_yazi_term = my_terminal:new({
+--   hidden = true,
+--   count = 9,
+--   --
+--   cmd = 'touch "$HOME/.tmp-yazi-cwd.txt"; yazi --cwd-file="$HOME/.tmp-yazi-cwd.txt"',
+--   display_name = "Yazi",
+--   direction = "float",
+--   close_on_exit = true,
+--   on_open = function(term)
+--     print("on_open")
+--     vim.cmd("startinsert!")
+--     vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", { silent = false, noremap = true })
+--     if vim.fn.mapcheck("<esc>", "t") ~= "" then
+--       vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
+--     end
+--   end,
+--   on_close = function(term)
+--     local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
+--     print("on_close: " .. my_str)
+--
+--     -- Change the Tab's current working directory to the selected directory
+--     vim.cmd("tcd " .. my_str)
+--     vim.cmd("verbose pwd")
+--
+--     print("yazi close: " .. my_str)
+--   end,
+--   on_exit = function()
+--     local my_str = vim.trim(vim.fn.system('cat $HOME/.tmp-yazi-cwd.txt'))
+--     print("on_exit: " .. my_str)
+--
+--     -- Change the Tab's current working directory to the selected directory
+--     vim.cmd("tcd " .. my_str)
+--     vim.cmd("verbose pwd")
+--
+--     print("yazi exit: " .. my_str)
+--   end,
+-- })
+--
+-- function My_yazi_terminal_toggle()
+--   my_yazi_term:toggle()
+-- end
+--
+-- vim.keymap.set("n", "<leader>y", My_yazi_terminal_toggle, { noremap = true, silent = true, desc = "Select for :tcd using yazi" })
 
 -- NOTE: Change window current dir (lcd) -----------------------------
 

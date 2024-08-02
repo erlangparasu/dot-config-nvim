@@ -1,6 +1,7 @@
 return {
   {
     "akinsho/toggleterm.nvim",
+    enabled = false,
     lazy = true,
     cmd = { "ToggleTerm" },
     keys = {

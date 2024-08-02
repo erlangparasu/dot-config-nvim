@@ -1,7 +1,7 @@
 return {
   {
     "ryanmsnyder/toggleterm-manager.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "akinsho/nvim-toggleterm.lua",
       "nvim-telescope/telescope.nvim",
