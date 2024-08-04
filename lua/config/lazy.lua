@@ -23,6 +23,7 @@ require("lazy").setup({
     -- DAP
     -- -
     -- Editor
+    { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
@@ -83,7 +84,7 @@ require("lazy").setup({
   checker = {
     -- automatically check for plugin updates
     enabled = false,
-    concurrency = 4, ---@type number? set to 1 to check for updates very slowly
+    -- concurrency = 1, ---@type number? set to 1 to check for updates very slowly
     notify = true, -- get a notification when new updates are found
     frequency = 86400, -- check for updates every 24 hours
     -- check_pinned = false, -- check for pinned packages that can't be updated
