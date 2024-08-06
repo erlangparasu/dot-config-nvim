@@ -6,7 +6,18 @@
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 
 
--- Disable autoformat for lua files
+-- NOTE: Disable line numbers for terminal buffers
+local augroup = vim.api.nvim_create_augroup("TerminalBuffer", {})
+vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufRead", "TermOpen", "TermEnter" }, {
+  group = augroup,
+  pattern = "term://*",
+  callback = function()
+    vim.opt_local.number = false
+  end,
+})
+
+ 
+-- NOTE: Disable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "lua" },
   callback = function()
