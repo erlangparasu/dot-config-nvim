@@ -19,7 +19,7 @@ require("lazy").setup({
     -- Coding
     { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- { import = "lazyvim.plugins.extras.coding.yanky" },
     -- DAP
     -- -
     -- Editor
