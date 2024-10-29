@@ -5,12 +5,6 @@
 -- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
 --
-vim.api.nvim_create_autocmd({ "WinClosed" }, {
-  pattern = "*",
-  callback = function()
-    print("A window has been closed.")
-  end,
-})
 
 -- NOTE: Disable line numbers for terminal buffers
 local augroup = vim.api.nvim_create_augroup("TerminalBuffer", {})

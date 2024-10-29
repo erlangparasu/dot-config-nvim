@@ -5,7 +5,23 @@ return {
     config = function()
       require("oil").setup({
         keymaps = {
-          ["<Esc>"] = "actions.close"
+          ["<Esc>"] = "actions.close",
+          ["`"] = function()
+            -- NOTE:cwd (current working directory)
+            local old_dir = vim.fn.getcwd()
+
+            -- NOTE: cd to selected directory by oil
+            require("oil.actions").cd.callback()
+
+            local cwd = vim.fn.getcwd()
+            if cwd == old_dir then
+              -- see: autoload_session
+              vim.cmd("LoadSession")
+            else
+              -- see: switch_session
+              vim.cmd("SwitchSession " .. cwd)
+            end
+          end
         },
         delete_to_trash = true,
         lsp_file_methods = {
