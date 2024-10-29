@@ -4,7 +4,13 @@
 
 -- NOTE: Ref: https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#open-for-files-and-no-name-buffers
 -- NOTE: Ref: https://neovim.io/doc/user/autocmd#autocmd-events
-
+--
+vim.api.nvim_create_autocmd({ "WinClosed" }, {
+  pattern = "*",
+  callback = function()
+    print("A window has been closed.")
+  end,
+})
 
 -- NOTE: Disable line numbers for terminal buffers
 local augroup = vim.api.nvim_create_augroup("TerminalBuffer", {})
@@ -16,7 +22,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufRead", "TermOp
   end,
 })
 
- 
 -- NOTE: Disable autoformat for lua files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "lua" },
@@ -27,69 +32,69 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- NOTE: Switch Session: Define the switch_session function
 local function switch_session(dir)
-    -- Ensure the directory path ends with a '/'
-    if not dir:match('/$') then
-        dir = dir .. '/'
+  -- Ensure the directory path ends with a '/'
+  if not dir:match("/$") then
+    dir = dir .. "/"
+  end
+
+  -- Get the current working directory
+  local cwd = vim.fn.getcwd()
+  local current_session_file = cwd .. "/.nvim-session.nvim"
+
+  -- Define the new session file path
+  local new_session_file = dir .. ".nvim-session.nvim" -- Adjust as needed
+
+  -- Save the current session in the current directory
+  vim.cmd("mksession! " .. current_session_file)
+
+  -- Close all open buffers
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, { force = true })
     end
+  end
 
-    -- Get the current working directory
-    local cwd = vim.fn.getcwd()
-    local current_session_file = cwd .. '/.nvim-session.nvim'
+  vim.cmd("cd " .. dir)
 
-    -- Define the new session file path
-    local new_session_file = dir .. '.nvim-session.nvim'  -- Adjust as needed
-
-    -- Save the current session in the current directory
-    vim.cmd('mksession! ' .. current_session_file)
-
-    -- Close all open buffers
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_is_loaded(buf) then
-            vim.api.nvim_buf_delete(buf, { force = true })
-        end
-    end
-
-    vim.cmd('cd ' .. dir)
-
-    -- Load the new session from the specified directory
-    vim.cmd('source ' .. new_session_file)
+  -- Load the new session from the specified directory
+  vim.cmd("source " .. new_session_file)
 end
 
 -- Create a command for switch_session
-vim.api.nvim_create_user_command('SwitchSession', function(opts)
-    switch_session(opts.args)
-end, { nargs = 1, complete = 'dir' })  -- Complete with directory
+vim.api.nvim_create_user_command("SwitchSession", function(opts)
+  switch_session(opts.args)
+end, { nargs = 1, complete = "dir" }) -- Complete with directory
 
 -- Example usage
 -- You can call this command in Neovim with:
 -- :SwitchSession /path/to/your/session/directory
 
 -- NOTE: Create a command for switch_session
-vim.api.nvim_create_user_command('SwitchSession', function(opts)
-    switch_session(opts.args)
-end, { nargs = 1, complete = 'dir' })  -- Complete with directory
+vim.api.nvim_create_user_command("SwitchSession", function(opts)
+  switch_session(opts.args)
+end, { nargs = 1, complete = "dir" }) -- Complete with directory
 
 -- NOTE: Load
 local function load_session()
-    local cwd = vim.fn.getcwd()
-    local session_file = cwd .. '/.nvim-session.nvim'  -- Adjust as needed
-    vim.cmd('source ' .. session_file)
+  local cwd = vim.fn.getcwd()
+  local session_file = cwd .. "/.nvim-session.nvim" -- Adjust as needed
+  vim.cmd("source " .. session_file)
 end
 
-vim.api.nvim_create_user_command('LoadSession', function(opts)
-    load_session()
-end, { nargs = 0 })  -- Complete with directory
+vim.api.nvim_create_user_command("LoadSession", function(opts)
+  load_session()
+end, { nargs = 0 }) -- Complete with directory
 
 -- NOTE: Save
 local function save_session()
-    local cwd = vim.fn.getcwd()
-    local session_file = cwd .. '/.nvim-session.nvim'  -- Adjust as needed
-    vim.cmd('mksession! ' .. session_file)
+  local cwd = vim.fn.getcwd()
+  local session_file = cwd .. "/.nvim-session.nvim" -- Adjust as needed
+  vim.cmd("mksession! " .. session_file)
 end
 
-vim.api.nvim_create_user_command('SaveSession', function(opts)
-    save_session()
-end, { nargs = 0 })  -- Complete with directory
+vim.api.nvim_create_user_command("SaveSession", function(opts)
+  save_session()
+end, { nargs = 0 }) -- Complete with directory
 
 -- -- NOTE: Auto open nvim-tree when open a buffer
 -- local function open_nvim_tree(args)
@@ -108,7 +113,6 @@ end, { nargs = 0 })  -- Complete with directory
 -- end
 
 -- vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = open_nvim_tree })
-
 
 -- NOTE: Auto load snippet *.code-snippets files (from .vscode directory)
 -- local function find_code_snippets()
@@ -185,7 +189,6 @@ end, { nargs = 0 })  -- Complete with directory
 -- end
 
 -- vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufRead", "BufReadPost", "SessionLoadPost" }, { callback = load_snippets_from_workdir })
-
 
 -- -- NOTE: Disable highlighter when open .sql file
 -- vim.api.nvim_create_autocmd("FileType", {
