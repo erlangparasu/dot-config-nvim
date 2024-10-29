@@ -25,6 +25,56 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- Define the switch_session function
+local function switch_session(dir)
+    -- Ensure the directory path ends with a '/'
+    if not dir:match('/$') then
+        dir = dir .. '/'
+    end
+
+    -- Get the current working directory
+    local cwd = vim.fn.getcwd()
+    local current_session_file = cwd .. '/.nvim-session.nvim'
+
+    -- Define the new session file path
+    local new_session_file = dir .. '.nvim-session.nvim'  -- Adjust as needed
+
+    -- Save the current session in the current directory
+    vim.cmd('mksession! ' .. current_session_file)
+
+    -- Close all open buffers
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_is_loaded(buf) then
+            vim.api.nvim_buf_delete(buf, { force = true })
+        end
+    end
+
+    vim.cmd('cd ' .. dir)
+
+    -- Load the new session from the specified directory
+    vim.cmd('source ' .. new_session_file)
+end
+
+-- Create a command for switch_session
+vim.api.nvim_create_user_command('SwitchSession', function(opts)
+    switch_session(opts.args)
+end, { nargs = 1, complete = 'dir' })  -- Complete with directory
+
+-- Example usage
+-- You can call this command in Neovim with:
+-- :SwitchSession /path/to/your/session/directory
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- -- NOTE: Auto open nvim-tree when open a buffer
 -- local function open_nvim_tree(args)
