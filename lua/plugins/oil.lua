@@ -15,11 +15,11 @@ return {
 
             local cwd = vim.fn.getcwd()
             if cwd == old_dir then
-              -- see: autoload_session
+              -- see: load_session
               vim.cmd("LoadSession")
             else
               -- see: switch_session
-              vim.cmd("SwitchSession " .. cwd)
+              vim.cmd("SwitchSession " .. old_dir .. " " .. cwd)
             end
           end
         },

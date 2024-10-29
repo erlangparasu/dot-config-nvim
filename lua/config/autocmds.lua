@@ -25,18 +25,20 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- NOTE: Switch Session: Define the switch_session function
-local function switch_session(dir)
+local function switch_session(old_dir, new_dir)
   -- Ensure the directory path ends with a '/'
-  if not dir:match("/$") then
-    dir = dir .. "/"
+  if not old_dir:match("/$") then
+    old_dir = old_dir .. "/"
   end
 
-  -- Get the current working directory
-  local cwd = vim.fn.getcwd()
-  local current_session_file = cwd .. "/.nvim-session.nvim"
+  if not new_dir:match("/$") then
+    new_dir = new_dir .. "/"
+  end
+
+  local current_session_file = old_dir .. ".session.vim"
 
   -- Define the new session file path
-  local new_session_file = dir .. ".nvim-session.nvim" -- Adjust as needed
+  local new_session_file = new_dir .. ".session.vim" -- Adjust as needed
 
   -- Save the current session in the current directory
   vim.cmd("mksession! " .. current_session_file)
@@ -48,30 +50,32 @@ local function switch_session(dir)
     end
   end
 
-  vim.cmd("cd " .. dir)
+  vim.cmd("cd " .. new_dir)
 
   -- Load the new session from the specified directory
   vim.cmd("source " .. new_session_file)
 end
 
 -- Create a command for switch_session
-vim.api.nvim_create_user_command("SwitchSession", function(opts)
-  switch_session(opts.args)
-end, { nargs = 1, complete = "dir" }) -- Complete with directory
+vim.api.nvim_create_user_command("SwitchSession", function(opts, a)
+  -- Split the arguments by space
+  local args = vim.split(opts.args, ' ')
+  -- Access individual arguments
+  local arg1 = args[1] or "."
+  local arg2 = args[2] or "."
+  print("First argument: " .. arg1)
+  print("Second argument: " .. arg2)
+  switch_session(arg1, arg2)
+end, { nargs = "+", complete = "dir" }) -- Complete with directory
 
 -- Example usage
 -- You can call this command in Neovim with:
 -- :SwitchSession /path/to/your/session/directory
 
--- NOTE: Create a command for switch_session
-vim.api.nvim_create_user_command("SwitchSession", function(opts)
-  switch_session(opts.args)
-end, { nargs = 1, complete = "dir" }) -- Complete with directory
-
 -- NOTE: Load
 local function load_session()
   local cwd = vim.fn.getcwd()
-  local session_file = cwd .. "/.nvim-session.nvim" -- Adjust as needed
+  local session_file = cwd .. "/.session.vim" -- Adjust as needed
   vim.cmd("source " .. session_file)
 end
 
@@ -82,7 +86,7 @@ end, { nargs = 0 }) -- Complete with directory
 -- NOTE: Save
 local function save_session()
   local cwd = vim.fn.getcwd()
-  local session_file = cwd .. "/.nvim-session.nvim" -- Adjust as needed
+  local session_file = cwd .. "/.session.vim" -- Adjust as needed
   vim.cmd("mksession! " .. session_file)
 end
 
