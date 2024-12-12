@@ -1,7 +1,7 @@
 return {
   {
     "tiagovla/scope.nvim",
-    enabled = true,
+    enabled = false,
     opts = {},
     config = function()
       require("scope").setup({})

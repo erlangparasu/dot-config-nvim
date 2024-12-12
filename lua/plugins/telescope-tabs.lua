@@ -1,7 +1,7 @@
 return {
   {
     "LukasPietzschmann/telescope-tabs",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "nvim-telescope/telescope.nvim"
     },

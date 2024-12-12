@@ -1,7 +1,7 @@
 return {
   {
     "nvim-pack/nvim-spectre",
-    enabled = true,
+    enabled = false,
     build = false,
     cmd = "Spectre",
     opts = {
