@@ -63,7 +63,7 @@ require("lazy").setup({
     -- {}
     -- UI
     { import = "lazyvim.plugins.extras.ui.alpha" },
-    { import = "lazyvim.plugins.extras.ui.smear-cursor" },
+    -- { import = "lazyvim.plugins.extras.ui.smear-cursor" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     -- Util
     { import = "lazyvim.plugins.extras.util.dot" },
