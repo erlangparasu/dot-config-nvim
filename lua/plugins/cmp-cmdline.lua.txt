@@ -1,11 +1,12 @@
 return {
   {
     "hrsh7th/cmp-cmdline",
-    enabled = true,
+    -- enabled = true,
     dependencies = {
       "hrsh7th/nvim-cmp",
     },
-    config = function()
+    version = "3403e2e9391ed0a28c3afddd8612701b647c8e26",
+    config = function(a, b)
       local cmp = require("cmp")
 
       -- `/` cmdline setup.

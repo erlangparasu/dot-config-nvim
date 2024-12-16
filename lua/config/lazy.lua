@@ -19,9 +19,10 @@ require("lazy").setup({
     -- Coding
     { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
     -- { import = "lazyvim.plugins.extras.coding.yanky" },
     -- DAP
-    -- -
+    -- {}
     -- Editor
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
@@ -33,7 +34,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.refactoring" },
     { import = "lazyvim.plugins.extras.editor.telescope" },
     -- Formating
-    -- -
+    -- {}
     -- Lang
     { import = "lazyvim.plugins.extras.lang.ansible" },
     { import = "lazyvim.plugins.extras.lang.docker" },
@@ -48,7 +49,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.sql" },
-    { import = "lazyvim.plugins.extras.lang.svelte" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
     { import = "lazyvim.plugins.extras.lang.toml" },
@@ -60,10 +60,11 @@ require("lazy").setup({
     -- LSP
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     -- Test
-    -- -
+    -- {}
     -- UI
     { import = "lazyvim.plugins.extras.ui.alpha" },
-    -- { import = "lazyvim.plugins.extras.ui.treesitter-context" },
+    { import = "lazyvim.plugins.extras.ui.smear-cursor" },
+    { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     -- Util
     { import = "lazyvim.plugins.extras.util.dot" },
     -- { import = "lazyvim.plugins.extras.util.project" },
