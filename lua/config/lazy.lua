@@ -1,11 +1,18 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
@@ -13,13 +20,13 @@ require("lazy").setup({
       "tjdevries/vlog.nvim",
       lazy = false,
     },
-    -- Add LazyVim and import its plugins
+    -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- Import any extras modules here
     -- Coding
-    { import = "lazyvim.plugins.extras.coding.luasnip" },
+    -- { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
+    -- { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
     -- { import = "lazyvim.plugins.extras.coding.yanky" },
     -- DAP
     -- {}
@@ -58,7 +65,7 @@ require("lazy").setup({
     -- Linting
     { import = "lazyvim.plugins.extras.linting.eslint" },
     -- LSP
-    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
     -- Test
     -- {}
     -- UI
@@ -82,13 +89,11 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
+  -- automatically check for plugin updates
   checker = {
-    -- automatically check for plugin updates
-    enabled = false,
-    -- concurrency = 1, ---@type number? set to 1 to check for updates very slowly
-    notify = true, -- get a notification when new updates are found
+    enabled = false, -- check for plugin updates periodically
+    notify = true, -- notify on update
     frequency = 86400, -- check for updates every 24 hours
-    -- check_pinned = false, -- check for pinned packages that can't be updated
   },
   performance = {
     rtp = {
@@ -106,5 +111,3 @@ require("lazy").setup({
     },
   },
 })
-
--- Eof.
