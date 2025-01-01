@@ -260,5 +260,3 @@ vim.api.nvim_create_autocmd({ "WinEnter", "WinLeave" }, {
     log.line("dev", "%s %s\n", d.event, vim.inspect(windows_by_tabpage))
   end,
 })
-
--- Eof.
