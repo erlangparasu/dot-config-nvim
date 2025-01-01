@@ -9,3 +9,4 @@ data
 
 .nvim-session.nvim
 .session.vim
+.DS_Store
