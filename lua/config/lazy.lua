@@ -23,14 +23,14 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- Import any extras modules here
-    -- Coding
+    -- ; Coding
     -- { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     -- { import = "lazyvim.plugins.extras.coding.nvim-cmp" },
     -- { import = "lazyvim.plugins.extras.coding.yanky" },
-    -- DAP
+    -- ; DAP
     -- {}
-    -- Editor
+    -- ; Editor
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
@@ -40,9 +40,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.outline" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },
     { import = "lazyvim.plugins.extras.editor.telescope" },
-    -- Formating
+    -- ; Formating
     -- {}
-    -- Lang
+    -- ; Lang
     { import = "lazyvim.plugins.extras.lang.ansible" },
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.git" },
@@ -62,21 +62,22 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.vue" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
-    -- Linting
+    -- ; Linting
     { import = "lazyvim.plugins.extras.linting.eslint" },
-    -- LSP
-    -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
-    -- Test
+    -- ; LSP
+    { import = "lazyvim.plugins.extras.lsp.neoconf" },
+    -- ; Test
     -- {}
-    -- UI
+    -- ; UI
     { import = "lazyvim.plugins.extras.ui.alpha" },
     -- { import = "lazyvim.plugins.extras.ui.smear-cursor" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-    -- Util
+    -- ; Util
     { import = "lazyvim.plugins.extras.util.dot" },
     -- { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.rest" },
-    -- Import/override with your plugins
+    { import = "lazyvim.plugins.extras.util.gitui" },
+    -- ; Import/override with your plugins
     { import = "plugins" },
   },
   defaults = {

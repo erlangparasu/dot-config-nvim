@@ -1,6 +1,7 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.lang.zig",
+    "lazyvim.plugins.extras.lsp.neoconf"
   ],
   "news": {
     "NEWS.md": "10960"
