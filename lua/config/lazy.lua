@@ -76,7 +76,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.dot" },
     -- { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.rest" },
-    { import = "lazyvim.plugins.extras.util.gitui" },
+    -- { import = "lazyvim.plugins.extras.util.gitui" },
     -- ; Import/override with your plugins
     { import = "plugins" },
   },
