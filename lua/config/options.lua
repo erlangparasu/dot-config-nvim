@@ -10,7 +10,8 @@ vim.opt.clipboard='unnamedplus'
 
 vim.opt.relativenumber = false
 
-vim.o.guifont = "JetBrainsMonoNL Nerd Font:h13" -- text below applies for VimScript
+-- vim.o.guifont = "JetBrainsMonoNL Nerd Font:h13" -- text below applies for VimScript
+vim.o.guifont = "Spline Sans Mono:h13" -- text below applies for VimScript
 
 vim.opt.sessionoptions = {
   -- "blank",
