@@ -8,7 +8,7 @@ vim.opt.guicursor = ""
 -- vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 vim.opt.clipboard='unnamedplus'
 
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- vim.o.guifont = "JetBrainsMonoNL Nerd Font:h13" -- text below applies for VimScript
 vim.o.guifont = "Spline Sans Mono:h13" -- text below applies for VimScript
