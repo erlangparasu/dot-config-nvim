@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.sessions",
+    "nvim-mini/mini.sessions",
     version = "*",
     enabled = false,
     opts = {
