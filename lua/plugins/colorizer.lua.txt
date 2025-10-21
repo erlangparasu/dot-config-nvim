@@ -1,0 +1,16 @@
+-- lua/plugins/colorizer.lua
+return {
+  "NvChad/nvim-colorizer.lua",
+  event = "VeryLazy", -- Load the plugin when Neovim is starting up
+  config = function()
+    require("colorizer").setup({
+      -- Options for nvim-colorizer.lua can be placed here
+      -- For example, to highlight all filetypes:
+      filetypes = { "*" },
+      -- Or specific filetypes:
+      -- filetypes = { "css", "html", "lua" },
+      -- You can also specify buftypes to exclude or include
+      -- buftypes = { "!prompt", "!popup" },
+    })
+  end,
+}
