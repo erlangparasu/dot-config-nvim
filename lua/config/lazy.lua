@@ -33,7 +33,7 @@ require("lazy").setup({
     -- ; Editor
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
-    { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    -- { import = "lazyvim.plugins.extras.editor.inc-rename" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.editor.mini-move" },
     { import = "lazyvim.plugins.extras.editor.navic" },
